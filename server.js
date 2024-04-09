@@ -8,20 +8,21 @@ const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const { v4: uuidv4 } = require('uuid');
 const cookieParser = require('cookie-parser');
+require('dotenv').config();
 
 
 const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'root123',
-  database: '128projtest'
+var con = mysql.createConnection({
+  host: "localhost",
+  user: process.env.USER_MYSQL,
+  password: process.env.PASSWORD_MYSQL, 
+  database: "128projtest"
 });
 
-connection.connect((error) => {
+con.connect((error) => {
   if (error) {
     console.error('Error connecting to database:', error);
   } else {
@@ -33,11 +34,11 @@ connection.connect((error) => {
 // Session management
 const sessionStore = new MySQLStore({
   host: 'localhost',
-  user: 'root',
-  password: 'root123',
+  user: process.env.USER_MYSQL,
+  password: process.env.PASSWORD_MYSQL,
   database: '128projtest',
   createDatabaseTable: true,  //create table if it doesnr exist
-}, connection);
+}, con);
 
 
 // Session middleware setup
@@ -97,7 +98,7 @@ app.post('/forgotpassword', (req, res) => {
   const { email } = req.body;
   const query = `SELECT * FROM users WHERE email = '${email}'`;
 
-  connection.query(query, (error, results) => {
+  con.query(query, (error, results) => {
     if (error) {
       console.error(error);
       res.status(500).send('An error occurred');
@@ -172,7 +173,7 @@ app.post('/resetpassword', (req, res) => {
 
   const updateQuery = `UPDATE users SET password = '${newPassword}' WHERE email = '${resetData.email}'`;
 
-  connection.query(updateQuery, (error) => {
+  con.query(updateQuery, (error) => {
     if (error) {
       console.error(error);
       res.status(500).send('An error occurred');
@@ -190,7 +191,7 @@ app.post('/login', (req, res) => {
   const { email, password } = req.body;
   const query = `SELECT * FROM users WHERE email = '${email}' AND password = '${password}'`;
 
-  connection.query(query, (error, results) => {
+  con.query(query, (error, results) => {
     if (error) {
       console.error(error);
       res.status(500).send('An error occurred');
@@ -212,7 +213,7 @@ app.post('/signup', (req, res) => {
   // Check if the username, phoneNumber, and email already exist in the database
   const checkQuery = `SELECT * FROM users WHERE username = '${username}' OR phoneNumber = '${phoneNumber}' OR email = '${email}'`;
 
-  connection.query(checkQuery, (error, results) => {
+  con.query(checkQuery, (error, results) => {
     if (error) {
       console.error(error);
       res.status(500).send('An error occurred');
@@ -229,7 +230,7 @@ app.post('/signup', (req, res) => {
     } else {
       const insertQuery = `INSERT INTO users (username, phoneNumber, email, password) VALUES ('${username}', '${phoneNumber}', '${email}', '${password}')`;
 
-      connection.query(insertQuery, (error) => {
+      con.query(insertQuery, (error) => {
         if (error) {
           console.error(error);
           res.status(500).send('An error occurred');
@@ -327,7 +328,7 @@ app.get('/index', disableCache, (req, res) => {
   WHERE u.id = ${userId}
 `;
   
-    connection.query(query, (error, results) => {
+    con.query(query, (error, results) => {
       if (error) {
         console.error(error);
         res.status(500).send('An error occurred');
@@ -360,7 +361,7 @@ app.post('/updateAccount', disableCache, (req, res) => {
     WHERE (username = '${username}' OR phoneNumber = '${phoneNumber}' OR email = '${email}') AND id <> ${userId}
   `;
 
-  connection.query(checkQuery, (error, results) => {
+  con.query(checkQuery, (error, results) => {
     if (error) {
       console.error(error);
       res.status(500).send('An error occurred');
@@ -390,7 +391,7 @@ app.post('/updateAccount', disableCache, (req, res) => {
         WHERE id = ${userId}
       `;
 
-      connection.query(updateQuery, (error) => {
+      con.query(updateQuery, (error) => {
         if (error) {
           console.error(error);
           res.status(500).send('An error occurred');
@@ -432,7 +433,7 @@ app.post('/checkout', (req, res) => {
   // console.log('Executing query:', query);
   // console.log('Query values:', values);
 
- connection.query(query, values, (error) => {
+ con.query(query, values, (error) => {
     if (error) {
       console.error(error);
       res.status(500).send('An error occurred');
@@ -451,8 +452,8 @@ const transporter = nodemailer.createTransport({
       port: 465,
       secure: true,
       auth: {
-        user: 'contactformpele@gmail.com',
-        pass: 'jhhglfjhsxolbydv',
+        user: process.env.CONTACT_EMAIL,
+        pass: process.env.CONTACT_PASSWORD,
       },
 });
 

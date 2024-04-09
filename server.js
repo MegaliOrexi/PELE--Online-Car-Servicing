@@ -462,8 +462,8 @@ app.post('/contact', (req, res) => {
 
   // Create the email message
   const mailOptions = {
-    from: 'contactformpele@gmail.com', // Update with your email address
-    to: 'mohammad.zain575@gmail.com', // Update with the recipient email address
+    from: process.env.CONTACT_EMAIL, // Update with your email address
+    to: process.env.PERSONAL_EMAIL, // Update with the recipient email address
     subject: topic,
     text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
   };

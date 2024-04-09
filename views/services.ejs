@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Services</title>
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <script src="serviceNpayment.js"></script>
+    
+  
+    <section class="subheader3">  
+    <nav>
+        <div class="nav-title">
+    <ul>
+        <li><a href="/index">PELE</a></li>
+    </ul>
+        </div>
+        <div class="nav-links">
+            <ul>    
+                <li><a href="/index">HOME</a></li>
+                <li><a href="/about">ABOUT</a></li>
+                <li><a href="/services">SERVICES</a></li>
+                <li><a href="/contact">CONTACT</a></li>
+                <% if (loggedIn) { %>
+                  <li><a href="/accdet"><i class="fa fa-user"></i></a></li>
+                <% } else { %>
+                  <li><a href="/login"><i class="fa fa-user"></i></a></li>
+                <% } %>
+            </ul>
+        </div>
+    </nav>
+   <h1>Our Services</h1>
+ </section>
+
+ <section class="abtus288">
+    <h1>&nbsp;Book Now</h1>
+    <div class="arow88">
+        <div class="servs-col88">
+          <p>Exterior Revive</p>
+          <div class="price-container88">
+            <span></span><div class="pricesizef">150</div>
+            <span>/AED</span>
+          </div>
+          <br>
+          <p style="border-top: 1px solid #fff;"><br><br>
+            <img src="CarWashing.avif" width="95%" style="border-radius: 10%;">
+            <br><br>
+            <div class="card" onmouseover="talkExteriorRevive(this)" onmouseout="introExteriorRevive(this)">
+            <p id="ServCon1">An outside wash of your car to remove contaminants
+                 and leave your car looking fresh.
+            </p>
+            </div>
+        </p><br>
+                 <a href="/Payment?serviceName=Exterior%20Revive&price=150" class="subbt88"  id="bookExteriorRevive">Book</a>
+        </div>
+       <div class="servs-col882">
+        <p>Full Refresh</p>
+          <div class="price-container88">
+            <span></span><div class="pricesizef">300</div>
+            <span>/AED</span>
+          </div>
+          <br>
+            <p style="border-top: 1px solid #fff;"><br><br>
+                <img src="https://images.unsplash.com/photo-1657638005531-a5c98fa49677?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" width="95%" style="border-radius: 10%;">
+            <br><br>
+            <div class="card" onmouseover="talkFullRefresh(this)" onmouseout="introFullRefresh(this)">
+            <p id="ServCon2">An outside and inside cleanse of your car, 
+                cleaning carpets, surfaces and paint, leaving your car
+                 looking and feeling immaculate.
+            </p>
+            </div>
+            </p><br>
+                 <a href="/Payment?serviceName=Full%20Refresh&price=300" class="subbt88" id="bookFullRefresh">Book</a>
+        </div>
+        <div class="servs-col883">
+          <p>Showroom Shine</p>
+          <div class="price-container88">
+            <span></span><div class="pricesizef">600</div>
+            <span>/AED</span>
+          </div>
+          <br>
+          <p style="border-top: 1px solid #fff;"><br><br>
+            <img src="https://images.unsplash.com/photo-1527581849771-416a9d62308e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" width="95%" style="border-radius: 10%;">
+          <br><br>
+          <div onmouseover="talkShowroomShine(this)" onmouseout="introShowroomShine(this)">
+          <p id="ServCon3">A Full Refresh, with a full outside paint restoration leaving
+          your car with a Showroom Shine.
+          </p>
+          </div>
+            </p><br>
+            <a href="/Payment?serviceName=Showroom%20Shine&price=600" class="subbt88" id="bookShowroomShine">Book</a>
+          </p>
+        </div>
+    </div>
+    <a href="/services2" class="subbt8899">Looking For Something Other Than a Wash?</a>
+</section>
+
+<script>
+    function introExteriorRevive(obj) {
+      document.getElementById("ServCon1").innerHTML = "An outside wash of your car to remove contaminants and leave your car looking fresh.";
+      document.querySelector('.servs-col88').style.height = '545px';
+    }
+
+    function talkExteriorRevive(obj) {
+      document.getElementById("ServCon1").innerHTML = "Our Outside Wash service is designed to give your vehicle a nice thorough and refreshing cleanse on the exterior, which ensures to leaving your car looking fresh. Our team of professionals will carefully wash your car, removing dirt, grime, and any other surface contaminants. We use high-quality cleaning products and techniques to ensure a spotless finish, leaving your car looking fresh and revitalized.";
+      document.querySelector('.servs-col88').style.height = '690px';
+    }
+
+    function introFullRefresh(obj) {
+      document.getElementById("ServCon2").innerHTML = "An outside and inside cleanse of your car, cleaning carpets, surfaces and paint, leaving your car looking and feeling immaculate.";
+      document.querySelector('.servs-col882').style.height = '545px';
+    }
+
+    function talkFullRefresh(obj) {
+      document.getElementById("ServCon2").innerHTML = "With our Outside and Inside Clean service, we go beyond the exterior and provide a complete cleaning experience for your vehicle. In addition to the meticulous exterior wash, our skilled technicians will also cleanse and sanitize the interior of your car. We'll vacuum the carpets and upholstery, wipe down surfaces, and make sure every nook and cranny is free from dust and debris. This service ensures that both the inside and outside of your car receive the attention they deserve, leaving it looking and feeling immaculate.";
+      document.querySelector('.servs-col882').style.height = '740px';
+    }
+
+    function introShowroomShine(obj) {
+      document.getElementById("ServCon3").innerHTML = "A Full Refresh, with a full outside paint restoration leaving your car with a Showroom Shine.";
+      document.querySelector('.servs-col883').style.height = '545px';
+    }
+
+    function talkShowroomShine(obj) {
+     document.getElementById("ServCon3").innerHTML = "Our Showroom Shine service is the ultimate package for those seeking a comprehensive rejuvenation for their vehicle. Our highly trained detailers will meticulously clean and restore every aspect of your car, both inside and out. From thorough exterior washing, waxing, and polishing, to deep cleaning and conditioning of the interior surfaces, including seats, carpets, and dashboard, we leave no detail overlooked. This service is perfect for those who want their car to regain its original luster and shine.";
+     document.querySelector('.servs-col883').style.height = '735px';
+    }
+
+</script>
+
+ <section class="footer">
+    <h4>Get To know Us</h4>
+    <p>Follow our social media accounts to get updates and offers before<br> anyone else.</p>
+        <div class="iconsF">
+            <i class="fa fa-facebook"></i>
+            <i class="fa fa-twitter"></i>
+            <i class="fa fa-instagram"></i>
+            <i class="fa fa-linkedin"></i>
+        </div>
+        <p>&copy Partners of PELE</p>
+ </section>
+</body>
+</html>

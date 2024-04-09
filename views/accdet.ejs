@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About Us</title>
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="accdet.css">
+    <link rel="stylesheet" href="serviceHistory.css">
+</head>
+<body>
+    <section class="subheader722">  
+        <nav>
+            <div class="nav-title">
+                <ul>
+                    <li><a href="/index">PELE</a></li>
+                </ul>
+            </div>
+            <div class="nav-links">
+                <ul>    
+                    <li><a href="/index">HOME</a></li>
+                    <li><a href="/about">ABOUT</a></li>
+                    <li><a href="/services">SERVICES</a></li>
+                    <li><a href="/contact">CONTACT</a></li>
+                    <li><a href="/accdet"><i class="fa fa-user"></i></a></li>
+                </ul>
+            </div>
+        </nav>
+        <h1>Account Details</h1>
+    </section>
+
+    <div class="container">
+        <div class="header55666">
+            <br><br><br><br>
+            <h1>Account Settings</h1>
+        </div>
+        <div class="card">
+            <div class="profile-tab-nav">
+                <div class="profile-info">
+                    <!-- <img src="user2.jpg" alt="Profile Picture" width="100">
+                    <h4><%= user.username %></h4> -->
+                </div>
+                <nav class="nav">
+                    <a href="/accdet" class="active" id="profileNav"><i class="fa fa-user"></i>Profile</a> <!----->
+                    <a href="#" id="serviceHistoryNav"><i class="fa fa-history"></i>Service History</a>
+                    <a href="/logout" id="logoutNav"><i class="fa fa-sign-out"></i>Logout</a>
+                </nav>
+            </div>
+            <div class="tab-content">
+                <div id="tab-profile">
+                    <h3>Profile</h3>
+                    <form action="/updateAccount" method="POST">
+                      <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="username" class="form-control" value="<%= user.username %>">
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Phone-No</label>
+                        <input type="text" id="age" name="phoneNumber" class="form-control" value="<%= user.phoneNumber %>" pattern="^\(\+971\)05[0-9]{8}$">
+                    </div>
+                    <div class="form-group">
+                        <label for="age">E-mail&nbsp;&nbsp;<i class="fa fa-envelope"></i></label>
+                        <input type="text" id="age" name="email" class="form-control" value="<%= user.email %>" pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$">
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Password&nbsp;&nbsp;<i class="fa fa-lock"></i></label>
+                        <input type="password" id="age" name="password" class="form-control" value="<%= user.password %>" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
+                    </div>
+                    <span id="accdet-error" class="error-message2" style="color: rgb(100, 2, 2); font-weight: bold;"><%= accDetError %></span>
+                    <div class="form-group">
+                        <br>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                    </form>
+                </div>
+                <div id="tab-service-history" style="display: none;">
+                  <div class="container222333">
+                    <% if (services.length === 0) { %>
+                      <h3>No services booked</h3>
+                    <% } else { %>
+                      <div class="rounded">
+                        <table>
+                          <thead>
+                            <tr>
+                              <th class="text-center">Order #</th>
+                              <th>Service</th>
+                              <th>Status</th>
+                              <th>Total</th>
+                              <th>Date Booked</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <% let serviceNumber = 1; %>
+                            <% services.forEach((service) => { %>
+                              <tr>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= serviceNumber %></td>
+                                <td><%= service.serviceName %></td>
+                                <td><span class="badge badge-info"><%= getServiceStatus(service.dateTime) %></span></td>
+                                <td><%= service.totalPrice + ' AED' %></td>
+                                <td><%= service.dateTime.toLocaleString(undefined, { weekday: 'long', month: 'short', day: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'}) %></td>
+                              </tr>
+                              <% serviceNumber++; %>
+                            <% }); %>
+                          </tbody>
+                        </table>
+                      </div>
+                    <% } %>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <section class="footer">
+        <h4>Get To know Us</h4>
+        <p>Follow our social media accounts to get updates and offers before anyone else.</p>
+        <div class="iconsF">
+            <i class="fa fa-facebook"></i>
+            <i class="fa fa-twitter"></i>
+            <i class="fa fa-instagram"></i>
+            <i class="fa fa-linkedin"></i>
+        </div>
+        <p>&copy Partners of PELE</p>
+    </section>
+
+    <script>
+        document.getElementById("serviceHistoryNav").addEventListener("click", function() {
+            document.getElementById("tab-profile").style.display = "none";
+            document.getElementById("tab-service-history").style.display = "block";
+        });
+
+        document.getElementById("profileNav").addEventListener("click", function() {
+            document.getElementById("tab-profile").style.display = "block";
+            document.getElementById("tab-service-history").style.display = "none";
+        });
+    </script>
+
+</body>
+</html>
+<!-- ==== -->

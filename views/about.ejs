@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About Us</title>
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <section class="subheader1">  
+    <nav>
+        <div class="nav-title">
+    <ul>
+        <li><a href="/index">PELE</a></li>
+    </ul>
+        </div>
+        <div class="nav-links">
+            <ul>    
+                <li><a href="/index">HOME</a></li>
+                <li><a href="/about">ABOUT</a></li>
+                <li><a href="/services">SERVICES</a></li>
+                <li><a href="/contact">CONTACT</a></li>
+                <% if (loggedIn) { %>
+                    <li><a href="/accdet"><i class="fa fa-user"></i></a></li>
+                  <% } else { %>
+                    <li><a href="/login"><i class="fa fa-user"></i></a></li>
+                  <% } %>
+            </ul>
+        </div>
+    </nav>
+   <h1>About Us</h1>
+ </section>
+
+ <section class="about-us-page-content">
+    <div class="arow">
+        <div class="abtP-col">
+            <h1>We are one of the few top automobile mantainance companies.</h1>
+            <p>Welcome to Pele Car Care, your premier mobile car care service! We understand
+                the value of your time and the importance of maintaining a clean and polished
+                vehicle and allow you to “Revive Your Ride, Wherever You Reside!”. With Pele 
+                Car Care, you can enjoy the convenience of professional car cleaning and detailing
+                wherever and whenever you desire. As our name suggests we are truly exceptional;
+                experience the difference with our skilled team of car experts who will come directly 
+                to your location, whether it's your home, office, or any other preferred spot, 
+                providing exceptional and meticulous car cleaning services.</p>
+                <a href="/services" class="absbt">Explore Now</a>
+        </div>
+        <div class="abtP-col">
+            <img src="https://images.unsplash.com/photo-1517672651691-24622a91b550?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80">
+        </div>
+    </div>
+ </section>
+
+ <section class="loca97">
+    <h1>Our Team</h1>
+    <p>Founders of Pele</p>
+
+    <div class="arow97">
+        <div class="loca-col97">
+            <img src="Zain.jpg">
+            <div class="layeri97">
+                <h3>Mohammad Zain<br>7776664</h3>
+            </div>
+        </div>
+        <div class="loca-col97">
+            <img src="https://images.unsplash.com/photo-1517942420142-6a296f9ee4b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80">
+            <div class="layeri97">
+                <h3>Muhammad Arsal<br>7811020</h3>
+            </div>
+        </div>
+        <div class="loca-col97">
+            <img src="Basil.jpg">
+            <div class="layeri97">
+                <h3>Basil Rauf<br>7873694</h3>
+            </div>
+        </div>
+        <div class="loca-col97">
+            <img src="Umar.jpg">
+            <div class="layeri97">
+                <h3>Umar Farzan<br>7328990</h3>
+            </div>
+        </div>
+        <div class="loca-col97">
+            <img src="Ahmed.jpg">
+            <div class="layeri97">
+                <h3>Ahmed<br>7754073</h3>
+            </div>
+        </div>
+    </div>
+ </section>
+ 
+
+ <section class="footer">
+    <h4>Get To know Us</h4>
+    <p>Follow our social media accounts to get updates and offers before<br> anyone else.</p>
+        <div class="iconsF">
+            <i class="fa fa-facebook"></i>
+            <i class="fa fa-twitter"></i>
+            <i class="fa fa-instagram"></i>
+            <i class="fa fa-linkedin"></i>
+        </div>
+        <p>&copy Partners of PELE</p>
+ </section>
+</body>
+</html>

@@ -1,0 +1,39 @@
+{
+    "emiratesList": [
+        {
+            "name": "Dubai",
+            "id": 1,
+            "DeliveryPrice": "5"
+        },
+        {
+            "name": "Abu Dhabi",
+            "id": 2,
+            "DeliveryPrice": "7"
+        },
+        {
+            "name": "Sharjah",
+            "id": 3,
+            "DeliveryPrice": "15"
+        },
+        {
+            "name": "Ajman",
+            "id": 4,
+            "DeliveryPrice": "16"
+        },
+        {
+            "name": "Umm Al-Quwain",
+            "id": 5,
+            "DeliveryPrice": "18"
+        },
+        {
+            "name": "Fujairah",
+            "id": 6,
+            "DeliveryPrice": "15"
+        },
+        {
+            "name": "Ras Al Khaimah",
+            "id": 7,
+            "DeliveryPrice": "6"
+        }
+    ]
+}

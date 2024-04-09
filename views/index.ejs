@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PELE</title>
+  <link rel="stylesheet" href="main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <section class="header">
+    <video autoplay muted loop id="video-background">
+      <source src="CleaningVideo.mp4.mov" type="video/mp4">
+    </video>
+    <nav>
+      <div class="nav-title">
+        <ul>
+          <li><a href="/index">PELE</a></li>
+        </ul>
+      </div>
+      <div class="nav-links">
+        <ul>
+          <li><a href="/index">HOME</a></li>
+          <li><a href="about">ABOUT</a></li>
+          <li><a href="services">SERVICES</a></li>
+          <li><a href="contact">CONTACT</a></li>
+          <% if (loggedIn) { %>
+            <li><a href="/accdet"><i class="fa fa-user"></i></a></li>
+          <% } else { %>
+            <li><a href="/login"><i class="fa fa-user"></i></a></li>
+          <% } %>
+        </ul>
+      </div>
+    </nav>
+    <div class="text-box">
+      <% if (loggedIn) { %>
+        <h1>Revive Your Ride, Whenever You Reside</h1>
+        <p>Simpler. Smarter. PELE</p><br>
+        <h2>Welcome, <%= loggedIn %>!</h2>
+        <a href="/logout" class="Joinus">Logout</a>
+      <% } else { %>
+        <h1>Revive Your Ride, Whenever You Reside</h1>
+        <p>Simpler. Smarter. PELE</p><br>
+        <a href="/login" class="Joinus">Join Us</a>
+      <% } %>
+    </div>
+  </section>
+
+  <section class="abtus">
+    <h1>&nbsp;On-Demand Mobile Car Services</h1>
+    <p id="abtp1">If you want to keep your car looking as good as it runs, then leave it to us.<br>
+        Our eco-friendly on-demand mobile car wash in Dubai, Sharjah, Ajman, and Abu Dhabi brings the clean to your <br>
+        machine - inside and out - and leaves it with a long-lasting shine.</p>
+        <br><a href="/about" class="absbt">Learn More</a>
+    </section>
+    <section class="abtus2">
+        <h1>&nbsp;Services We Offer</h1>
+        <p id="abtp2">Some of them are:</p>
+        <div class="arow">
+            <div class="servs-col">
+                <h3 class="h3ab2">Exterior Revive</h3>
+                <p>An outside wash of your car to remove 
+                 contaminants and leave your car looking fresh.</p>
+            </div>
+           <div class="servs-col">
+            <h3 class="h3ab2">Full Refresh</h3>
+                <p>An outside and inside cleanse of your car, 
+                    cleaning carpets, surfaces and paint, leaving your 
+                    car looking and feeling immaculate.</p>
+            </div>
+            <div class="servs-col">
+            <h3 class="h3ab2">Showroom Shine</h3>
+                <p>An outside and inside cleanse, 
+                    with a full outside paint restoration leaving your car 
+                    with a Showroom Shine.</p>
+            </div>
+        </div>
+         <a href="/services" class="absbt">See All</a>
+ </section>
+ 
+ <section class="loca">
+    <h1>Our Prime Locations</h1>
+    <p>Services available anywhere at anytime</p>
+
+    <div class="arow">
+        <div class="loca-col">
+            <img src="https://images.unsplash.com/photo-1542718786-2e81a9d3dfac?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80">
+            <div class="layeri">
+                <h3>RAK</h3>
+            </div>
+        </div>
+        <div class="loca-col">
+            <img src="https://images.unsplash.com/photo-1574542273427-c19a9a81d00a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80">
+            <div class="layeri">
+                <h3>Dubai</h3>
+            </div>
+        </div>
+        <div class="loca-col">
+            <img src="https://images.unsplash.com/photo-1530919424169-4b95f917e937?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1886&q=80">
+            <div class="layeri">
+                <h3>Abu-Dhabi</h3>
+            </div>
+        </div>
+    </div>
+ </section>
+
+ <section class="review">
+    <h1>What Our Customers Say About Us</h1>
+
+    <div class="arow">
+        <div class="review-col">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80">
+            <div>
+                <p>After using Pele Car Care multiple times, 
+                    I can comfortably say that it is the best car care service in the UAE. 
+                    I have subscribed to their monthly service, and they have never let me down. 
+                    They are always on time and are professionals in their field of work.</p>
+                     <h3>Christine Berkley</h3>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+            </div>
+        </div>
+        <div class="review-col">
+            <img src="https://images.unsplash.com/photo-1529847556963-9653a9366021?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=723&q=80">
+            <div>
+                <p>I recommend Pele Car Care to everyone I know, 
+                    after using their service countless number of times I 
+                    have always been satisfied with the results and I am planning on subscribing 
+                    to their monthly plan soon. They are truly amazing.</p><br>
+                     <h3>David Ashton</h3>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star-half-o"></i>
+            </div>
+        </div>
+    </div>
+ </section>
+
+ <section class="cta">
+    <h1>Call For Us Anytime, Anywhere.</h1>
+    <a href="/contact" class="absbt23">CONTACT US</a>
+ </section>
+
+ <section class="footer">
+    <h4>Get To know Us</h4>
+    <p>Follow our social media accounts to get updates and offers before<br> anyone else.</p>
+        <div class="iconsF">
+            <i class="fa fa-facebook"></i>
+            <i class="fa fa-twitter"></i>
+            <i class="fa fa-instagram"></i>
+            <i class="fa fa-linkedin"></i>
+        </div>
+        <p>&copy Partners of PELE</p>
+ </section>
+
+  <script>
+    // Get the joinUsLink element
+    var joinUsLink = document.querySelector("a.Joinus");
+
+    // Check if the link text is "Join Us"
+    if (joinUsLink.textContent === "Join Us") {
+      // Update the link text and href attribute
+      joinUsLink.textContent = "Join us <%= loggedIn %>";
+      joinUsLink.href = "/logout";
+    }
+  </script>
+
+</body>
+</html>

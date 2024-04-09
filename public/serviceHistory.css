@@ -1,0 +1,78 @@
+body {
+    background: #eee;
+    font-family: "Quicksand", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container222333 {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.rounded {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background: #dddcdc;
+}
+
+.badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.badge-success {
+    background: #28a745;
+    color: #fff;
+}
+
+.badge-info {
+    background: #17a2b8;
+    color: #fff;
+}
+
+.badge-danger {
+    background: #dc3545;
+    color: #fff;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-black-50 {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+#profileNav{
+    background-color: white;
+}
+
+#profileNav:hover{
+    background-color: #878787;
+}
+
+#serviceHistoryNav:hover{
+    background-color: #878787;
+}
+
+#logoutNav:hover{
+    background-color: #878787;
+}

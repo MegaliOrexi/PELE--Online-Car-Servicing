@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="login.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Pangolin&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container" id="container">
+    <div class="form-container sign-up-container">
+      <form action="/signup" method="post">
+        <h1>Create Account</h1>
+        <input type="text" placeholder="Name" name="username" autofocus />
+        <input type="tel" placeholder="Phone Number" name="phoneNumber" value="(+971)05" pattern="^\(\+971\)05[0-9]{8}$"  id="phoneInput" required/>
+        <input type="email" placeholder="Email" name="email" pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"  title="Please enter a valid email address" />
+        <input type="password" placeholder="Password" name="password" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" title="Password must be at least 8 characters long and contain at least one letter and one digit"/>
+        <span id="signup-error-message" class="error-message"></span><br>
+        <button type="submit" value="Signup">Sign Up</button>
+      </form>
+    </div>
+    <div class="form-container sign-in-container">
+      <form action="/login" method="post">
+        <h1>Sign in</h1>
+                    <input type="email" placeholder="Email" name="email" pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" title="Please enter a valid email address" autofocus required />
+                    <input type="password" placeholder="Password" name="password" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" title="Password must be at least 8 characters long and contain at least one letter and one digit" required />
+                    <span id="login-error-message" class="error-message"></span>
+                    <a href="/forgotpassword">Forgot your password?</a>
+                    <button type="submit" value="Login">Sign In</button>
+      </form>
+    </div>
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-left">
+            <h1>Hello Again!</h1>
+            <p>To keep connected with us please login with your personal info</p>
+            <button class="ghost" id="signIn">Sign In</button>
+        </div>
+        <div class="overlay-panel overlay-right">
+            <h1>Welcome to <span id="main">PELE!</span> </h1>
+            <p>Enter your personal details and start your journey with us</p>
+            <button class="ghost" id="signUp">Sign Up</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const signUpButton = document.getElementById('signUp');
+    const signInButton = document.getElementById('signIn');
+    const container = document.getElementById('container');
+
+    // Get the current URL path
+    const path = window.location.pathname;
+
+    if (path === '/signup') {
+      // Display the signup form
+      container.classList.add('right-panel-active');
+    } else if (path === '/login') {
+      // Display the login form
+      container.classList.remove('right-panel-active');
+    }
+
+    signUpButton.addEventListener('click', () => {
+  container.classList.add('right-panel-active');
+  if (window.history.replaceState) {
+    window.history.replaceState(null, '', '/signup'); // Change URL to /signup
+  }
+});
+
+signInButton.addEventListener('click', () => {
+  container.classList.remove('right-panel-active');
+  if (window.history.replaceState) {
+    window.history.replaceState(null, '', '/login'); // Change URL to /login
+  }
+});
+  </script>
+
+<script>
+    const loginError = '<%= loginError %>'; // Retrieve the login error message from the server-side
+    const signupError = '<%= signupError %>'; // Retrieve the signup error message from the server-side
+  
+    if (loginError) {
+      const loginErrorMessageElement = document.getElementById('login-error-message');
+      loginErrorMessageElement.textContent = loginError;
+    }
+  
+    if (signupError) {
+      const signupErrorMessageElement = document.getElementById('signup-error-message');
+      signupErrorMessageElement.textContent = signupError;
+    }
+  </script>
+  
+</body>
+</html>

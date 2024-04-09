@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="Payment.css">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+  <title>Document</title>
+</head>
+
+<body onload="updateLabels()">
+  <div class="master-container">
+    <form class="form" id="checkoutForm"  onsubmit="return validateForm()">
+      <div class="card cart">
+        <label class="title">Your cart</label>
+        <div class="products">
+          <div class="product">
+            <span name="serviceName" id="serviceName"></span>
+            <label class="price small" id="price" name="servicePrice"></label>       
+          </div>
+          <div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gap"></div>
+
+      <div class="card location">
+        <label class="title">Your Address</label>
+        <div class="sameLine">
+          <p id="demo_emirates" name="emirate"></p>
+        </div>
+        <div class="sameLine">
+          <label for="address">Location: &nbsp;</label>
+          <input type="text" id="address" placeholder="Al Majaz 3, Safya Tower, Arab Cultural Street" name="location">
+        </div>
+      </div>
+
+      <div class="gap"></div>
+
+      <div class="card exDetails">
+        <label class="title">Extra Details</label>
+        <div class="spacing">
+          <div class="sameLine">
+            <label for="date">Timing: &nbsp;</label>
+            <input type="datetime-local" id="date" name="dateTime">
+            <p id="timetxt"></p>
+          </div>
+          <div class="sameLine">
+            <label for="Plate_Number">Plate Number: &nbsp;</label>
+            <input type="text" name="plateNumber" id="Plate_Number" placeholder="C23796">
+          </div>
+        </div>
+      </div>
+
+      <div class="gap"></div>
+
+      <div class="card checkout">
+        <label class="title">Amount</label>
+        <div class="details">
+          <span>Your cart subtotal:</span>
+          <span id="price1"></span>
+          <span>Shipping fees:</span>
+          <span id="shipping_fees"></span>
+        </div>
+      </div>
+
+      <div class="gap"></div>
+
+      <div class="card payment">
+        <label class="title">Payment</label>
+        <div class="bigPayment">
+          <div class="spacing">
+            <label for="cardP">Card Payment</label>
+            <input type="radio" name="paymentMethod" class="input_field" id="cardP" onclick="paymentFields(this)">
+          </div>
+          <div id="paymentFields"></div>
+          <div class="spacing">
+            <label for="cashP">Cash On Delivery</label>
+            <input type="radio" name="paymentMethod" class="input_field" id="cashP" onclick="nopaymentFields(this)">
+          </div>
+          <div class="payment--footer">
+            <label class="price"><sup>AED </sup><span id="total" name="totalPrice"></span></label>
+            <button class="payment-btn" onclick="submitService()">Checkout</button>
+          </div>
+        </div>
+      </div>
+      <div class="error-message" id="errorContainer" style="color: crimson;"></div>
+    </form>
+  </div>
+
+  <script>
+
+  function validateForm() {
+  // Reset error messages
+  document.getElementById('errorContainer').innerHTML = '';
+
+  // Retrieve form field values
+  const location = document.getElementById('address').value;
+  const dateTime = document.getElementById('date').value;
+  const plateNumber = document.getElementById('Plate_Number').value;
+  const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
+  
+  // Perform field validation
+
+  if (location.trim() === '') {
+    displayErrorMessage('Please enter your address.');
+    return false;
+  }
+
+  if (dateTime.trim() === '') {
+    displayErrorMessage('Please select a date and time.');
+    return false;
+  }
+
+  // Validate if selected date is not earlier than today
+  const selectedDate = new Date(dateTime);
+  const currentDate = new Date();
+
+  if (selectedDate < currentDate) {
+    displayErrorMessage('Please select a date and time that is not earlier than today.');
+    return false;
+  }
+
+  if (plateNumber.trim() === '') {
+    displayErrorMessage('Please enter your plate number.');
+    return false;
+  }
+
+  // Pattern matching for plateNumber field (5 digits)
+  const plateNumberPattern = /[A-Z][0-9]{5}$/;
+  if (!plateNumberPattern.test(plateNumber)) {
+    displayErrorMessage('Please enter a valid plate number (A letter and 5 digits).');
+    return false;
+  }
+
+  if (!paymentMethod) {
+    displayErrorMessage('Please select a payment method.');
+    return false;
+  }
+
+  
+
+  // If all fields are valid, return true to allow form submission
+  return true;
+}
+
+function displayErrorMessage(message) {
+  const errorContainer = document.getElementById('errorContainer');
+  const errorMessage = document.createElement('p');
+  errorMessage.textContent = message;
+  errorContainer.appendChild(errorMessage);
+}
+
+
+    // Function to get URL parameters
+    function getUrlParams() {
+        var params = {};
+        var parts = window.location.search.substring(1).split('&');
+        for (var i = 0; i < parts.length; i++) {
+            var pair = parts[i].split('=');
+            var key = decodeURIComponent(pair[0]);
+            var value = decodeURIComponent(pair[1]);
+            params[key] = value;
+        }
+        return params;
+    }
+
+    // Function to update labels with URL parameters
+    function updateLabels() {
+        var params = getUrlParams();
+        var serviceNameLabel = document.getElementById('serviceName');
+        var priceLabel = document.getElementById('price');
+        var price1Label = document.getElementById('price1');
+
+        if (params.serviceName) {
+            serviceNameLabel.textContent = params.serviceName;
+        }
+
+        if (params.price) {
+            priceLabel.textContent = params.price + ' AED';
+        }
+
+        if (params.price) {
+            price1Label.textContent = params.price ;
+        }
+
+        var emirateSelect = document.querySelector('select[name="emirate"]');
+        var emiratesIndex = emirateSelect.selectedIndex;
+        onChangeEmirates(emiratesIndex);
+
+    }
+</script>
+
+  <script>
+
+    document.addEventListener('DOMContentLoaded', () => {
+      getEmiratesAJAX();
+    });
+
+    function getEmiratesAJAX() {
+      fetch('payments.json')
+        .then(response => response.json())
+        .then(data => {
+          emiratesObj = data;
+          displayEmiratesDropDownMenu();
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+
+    function displayEmiratesDropDownMenu() {
+      var select = document.createElement('select');
+      select.name = 'emirate';
+      select.addEventListener('change', () => {
+        onChangeEmirates(select.selectedIndex);
+      });
+      
+      emiratesObj.emiratesList.forEach(emirate => {
+        var option = document.createElement('option');
+        option.value = emirate.id;
+        option.textContent = emirate.name;
+        select.appendChild(option);
+      });
+
+      var emiratesContainer = document.getElementById('demo_emirates');
+      emiratesContainer.innerHTML = 'Emirate: &nbsp;';
+      emiratesContainer.appendChild(select);
+
+      //set Dubai as the default emirate
+      onChangeEmirates(select.selectedIndex);
+    }
+
+    function onChangeEmirates(emiratesIndex) {
+      var selectedEmirate = emiratesObj.emiratesList[emiratesIndex];
+      document.getElementById('shipping_fees').textContent = selectedEmirate.DeliveryPrice + ' AED';
+      var deliveryPrice = parseInt(selectedEmirate.DeliveryPrice);
+      var price1 = parseInt(document.getElementById('price1').innerHTML);
+      var total = deliveryPrice + price1;
+      document.getElementById('total').textContent = total;
+    }
+
+    function paymentFields(obj) {
+      var paymentFieldsContainer = document.getElementById('paymentFields');
+      paymentFieldsContainer.innerHTML = `
+        <form>
+          <label for="creditCardNum">Card Number:</label>
+          <input type="text" id="creditCardNum" name="creditCardNum" size="20"
+            placeholder="XXXX-XXXX-XXXX-XXXX" title="XXXX-XXXX-XXXX-XXXX" pattern="\\d{4}-\\d{4}-\\d{4}-\\d{4}" required>
+          <label for="cvv">CVV:</label>
+          <input type="text" id="cvv" name="cvv" id="cvv" placeholder="XXX" pattern="^\\d{3}$" required>
+          <label for="expDate">Expiry Date:</label>
+          <input type="text" id="expDate" name="expDate" id="expDate" placeholder="XX-XX" pattern="^\\d{2}-\\d{2}$" required>
+        </form>
+      `;
+    }
+
+    function nopaymentFields(obj) {
+      var paymentFieldsContainer = document.getElementById('paymentFields');
+      paymentFieldsContainer.innerHTML = '';
+    }
+
+    //-------
+    function submitService() {
+  const serviceName = document.getElementById('serviceName').textContent;
+  const servicePrice = parseFloat(document.getElementById('price1').textContent);
+  const emirateSelect = document.querySelector('select[name="emirate"]');
+  const emirate = emirateSelect.options[emirateSelect.selectedIndex].textContent;
+  const location = document.getElementById('address').value;
+  const dateTime = document.getElementById('date').value;
+  const plateNumber = document.getElementById('Plate_Number').value;
+  const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+  const totalPrice = parseFloat(document.getElementById('total').textContent);
+
+  if (!validateForm()) {
+    // If the form validation fails, return without submitting
+    return;
+  }
+
+
+  let paymentMethodValue;
+  if (document.getElementById('cardP').checked) {
+    paymentMethodValue = 'Card Payment';
+  } else if (document.getElementById('cashP').checked) {
+    paymentMethodValue = 'Cash on Delivery';
+  } else {
+    paymentMethodValue = 'Unknown';
+  }
+
+  fetch('/checkout', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      serviceName,
+      servicePrice,
+      emirate,
+      location,
+      dateTime,
+      plateNumber,
+      paymentMethod: paymentMethodValue,
+      totalPrice
+    })
+  })
+    .then(response => {
+      if (response.ok) {
+        // Redirect to a success page or perform any other necessary actions
+        window.location.href = '/paymentsuccess';
+      } else {
+        console.error('Payment failed');
+      }
+    })
+    .catch(error => {
+      console.error(error);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Prevent form submission and handle it manually
+  const form = document.getElementById('checkoutForm');
+  form.addEventListener('submit', event => {
+    event.preventDefault(); // Prevent default form submission behavior
+  });
+});
+    //-------
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Services</title>
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <script src="serviceNpayment.js"></script>
+    
+  
+    <section class="subheader3serv2">  
+    <nav>
+        <div class="nav-title">
+    <ul>
+        <li><a href="/index">PELE</a></li>
+    </ul>
+        </div>
+        <div class="nav-links">
+            <ul>    
+                <li><a href="/index">HOME</a></li>
+                <li><a href="/about">ABOUT</a></li>
+                <li><a href="/services">SERVICES</a></li>
+                <li><a href="/contact">CONTACT</a></li>
+                <% if (loggedIn) { %>
+                  <li><a href="/accdet"><i class="fa fa-user"></i></a></li>
+                <% } else { %>
+                  <li><a href="/login"><i class="fa fa-user"></i></a></li>
+                <% } %>
+            </ul>
+        </div>
+    </nav>
+   <h1>Our Services</h1>
+ </section>
+
+ <section class="abtus288serv2">
+    <h1>&nbsp;Book Now</h1>
+    <div class="arow88serv2">
+        <div class="servs-col88serv2">
+          <p>Oil Change</p>
+          <div class="price-container88serv2">
+            <span></span><div class="pricesizefserv2">885</div>
+            <span>/AED</span>
+          </div>
+          <br>
+          <p style="border-top: 1px solid #fff;"><br><br>
+            <img src="https://media.istockphoto.com/id/518901244/photo/motor-oil.webp?b=1&s=170667a&w=0&k=20&c=W2u94-yR8OmxZVZfDALwGVL0s_CCcXH4_j9KxnMrphc=" width="95%" style="border-radius: 10%;">
+            <br><br>
+            <div class="card" onmouseover="talkExteriorRevive(this)" onmouseout="introExteriorRevive(this)">
+            <p id="ServCon1">Modern engines rely on advanced oils to keep them running smoothly
+                 and problem-free, mile after mile. Book an oil change and we'll come to you.
+            </p>
+            </div>
+        </p><br>
+                 <a href="/Payment?serviceName=Oil%20Change&price=885" class="subbt88serv2"  id="bookOilChange">Book</a>
+        </div>
+       <div class="servs-col882serv2">
+        <p>Tyre Service</p>
+          <div class="price-container88serv2">
+            <span></span><div class="pricesizefserv2">1,121</div>
+            <span>/AED</span>
+          </div>
+          <br>
+            <p style="border-top: 1px solid #fff;"><br><br>
+                <img src="https://images.unsplash.com/photo-1612692064035-df2d74a77cb8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" width="95%" style="border-radius: 10%;">
+            <br><br>
+            <div class="card" onmouseover="talkFullRefresh(this)" onmouseout="introFullRefresh(this)">
+            <p id="ServCon2">Get tyres from leading brands anytime anywhere.
+            </p>
+            </div>
+            </p><br>
+                 <a href="/Payment?serviceName=Tyre%20Service&price=1121" class="subbt88serv2" id="bookTyreService">Book</a>
+        </div>
+        <div class="servs-col883serv2">
+          <p>Battery Replacement</p>
+          <div class="price-container88serv2">
+            <span></span><div class="pricesizefserv2">299</div>
+            <span>/AED</span>
+          </div>
+          <br>
+          <p style="border-top: 1px solid #fff;"><br><br>
+            <img src="https://plus.unsplash.com/premium_photo-1661770030805-0abb8fd880f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1952&q=80" width="95%" style="border-radius: 10%;">
+          <br><br>
+          <div onmouseover="talkShowroomShine(this)" onmouseout="introShowroomShine(this)">
+          <p id="ServCon3">Car battery replacement and jump-start service. If you're struggling to get going, 
+            Our reliable battery service is designed to get you back on the road as quickly as possible.
+          </p>
+          </div>
+            </p><br>
+            <a href="/Payment?serviceName=Battery%20Replacement&price=299" class="subbt88serv2" id="bookBatteryReplacement">Book</a>
+          </p>
+        </div>
+    </div>
+    <a class="subbt8899serv2">More Coming Soon..</a>
+</section>
+
+<script>
+    function introExteriorRevive(obj) {
+      document.getElementById("ServCon1").innerHTML = "Modern engines rely on advanced oils to keep them running smoothly and problem-free, mile after mile. Book an oil change and we'll come to you.";
+      document.querySelector('.servs-col88serv2').style.height = '545px';
+    }
+
+    function talkExteriorRevive(obj) {
+        document.getElementById("ServCon1").innerHTML = '<p><br><i class="fa fa-tint"></i>&nbsp;Mobil 1<sup>TM</sup><br><small><i class="fa fa-map-marker"></i>&nbsp;10,000 - 12,000 kms</small><br><br><i class="fa fa-tint"></i>&nbsp;Mobil Super 2000<sup>TM</sup><br><small><i class="fa fa-map-marker"></i>&nbsp;6,000 - 8,000 kms</small><br><br><i class="fa fa-tint"></i>&nbsp;Mobil Super 3000<sup>TM</sup><br><small><i class="fa fa-map-marker"></i>&nbsp;8,000 - 10,000 kms</small><br><br><i class="fa fa-tint"></i>&nbsp;Total Quartz 9000 Energy<br><small><i class="fa fa-map-marker"></i>&nbsp;10,000 - 12,000 kms</small><br><br><i class="fa fa-tint"></i>&nbsp;Total Quartz 7000<br><small><i class="fa fa-map-marker"></i>&nbsp;6,000 - 8,000 kms</small><br><br></p>';
+      document.querySelector('.servs-col88serv2').style.height = '780px';
+    }
+
+    function introFullRefresh(obj) {
+      document.getElementById("ServCon2").innerHTML = "Get tyres from leading brands anytime anywhere.";
+      document.querySelector('.servs-col882serv2').style.height = '545px';
+    }
+
+    function talkFullRefresh(obj) {
+      document.getElementById("ServCon2").innerHTML = "Your tyres are the key to safe driving - they're literally the link between your car and the road. That's why it's essential to keep them in good condition, and to replace them when needed. And with our mobile tyre change service in UAE, it's never been quicker or easier - we could be with you in as little as 30 minutes, from 9am to 10pm, daily.";
+      document.querySelector('.servs-col882serv2').style.height = '650px';
+    }
+
+    function introShowroomShine(obj) {
+      document.getElementById("ServCon3").innerHTML = "Car battery replacement and jump-start service. If you're struggling to get going, Our reliable battery service is designed to get you back on the road as quickly as possible.";
+      document.querySelector('.servs-col883serv2').style.height = '545px';
+    }
+
+    function talkShowroomShine(obj) {
+     document.getElementById("ServCon3").innerHTML = "What we offer, Our trained technician will check your battery, starter motor and charging system, and let you know the problem. If you just need a jump-start, we'll have you on your way in minutes. If your battery needs changing, we'll expertly install a replacement. All our batteries come complete with a comprehensive warranty, including unlimited jump-starts.";
+     document.querySelector('.servs-col883serv2').style.height = '650px';
+    }
+
+</script>
+
+ <section class="footer">
+    <h4>Get To know Us</h4>
+    <p>Follow our social media accounts to get updates and offers before<br> anyone else.</p>
+        <div class="iconsF">
+            <i class="fa fa-facebook"></i>
+            <i class="fa fa-twitter"></i>
+            <i class="fa fa-instagram"></i>
+            <i class="fa fa-linkedin"></i>
+        </div>
+        <p>&copy Partners of PELE</p>
+ </section>
+</body>
+</html>

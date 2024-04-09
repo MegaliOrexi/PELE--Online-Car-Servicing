@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact</title>
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <section class="subheader2">  
+    <nav>
+        <div class="nav-title">
+    <ul>
+        <li><a href="/index">PELE</a></li>
+    </ul>
+        </div>
+        <div class="nav-links">
+            <ul>    
+                <li><a href="/index">HOME</a></li>
+                <li><a href="/about">ABOUT</a></li>
+                <li><a href="/services">SERVICES</a></li>
+                <li><a href="/contact">CONTACT</a></li>
+                <% if (loggedIn) { %>
+                    <li><a href="/accdet"><i class="fa fa-user"></i></a></li>
+                  <% } else { %>
+                    <li><a href="/login"><i class="fa fa-user"></i></a></li>
+                  <% } %>
+            </ul>
+        </div>
+    </nav>
+   <h1>Contact Us</h1>
+ </section>
+
+ <section class="lmap">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58073.474227
+    84025!2d54.33051804636464!3d24.534191622745823!2m3!1f0!2f0!3f0!3m2!1i1024!2i768
+    !4f13.1!3m3!1m2!1s0x3e5e675f485604db%3A0x924f660d78841f25!2sADVOC%20Warehouse!5
+    e0!3m2!1sen!2sae!4v1685708831596!5m2!1sen!2sae" 
+    width="600" height="450" style="border:0;" allowfullscreen="" 
+    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+ </section>
+ 
+ <section class="contus">
+    <div class="arow">
+        <div class="contus-col">
+            <div>
+            <i class="fa fa-home"></i>
+            <span>
+                <h5>Al Marayih St., PELE Warehouse</h5>
+                <p>Abu-Dhabi, UAE</p>
+            </span>
+           </div>
+           <div>
+            <i class="fa fa-phone"></i>
+            <span>
+                <h5>+971-563287285</h5>
+                <p>All Days</p>
+            </span>
+           </div>
+           <div>
+            <i class="fa fa-envelope-o"></i>
+            <span>
+                <h5>support@pele.com</h5>
+                <p>Email us your query</p>
+            </span>
+           </div>
+        </div>
+        <div class="contus-col">
+            <form action="/contact" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <input type="text" name="topic" placeholder="Subject" required>
+                <textarea name="message" placeholder="Message" rows="8" required></textarea>
+                <button type="submit" class="absbt">Send</button>
+              </form>
+        </div>
+    </div>
+ </section>
+
+ <section class="footer">
+    <h4>Get To know Us</h4>
+    <p>Follow our social media accounts to get updates and offers before<br> anyone else.</p>
+        <div class="iconsF">
+            <i class="fa fa-facebook"></i>
+            <i class="fa fa-twitter"></i>
+            <i class="fa fa-instagram"></i>
+            <i class="fa fa-linkedin"></i>
+        </div>
+        <p>&copy Partners of PELE</p>
+ </section>
+
+</body>
+</html>

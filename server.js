@@ -115,13 +115,13 @@ app.post('/forgotpassword', (req, res) => {
         port: 465,
         secure: true,
         auth: {
-          user: 'contactformpele@gmail.com',
-          pass: 'jhhglfjhsxolbydv',
+          user: process.env.CONTACT_EMAIL,
+          pass: process.env.CONTACT_PASSWORD,
         },
       });
 
       const mailOptions = {
-        from: 'contactformpele@gmail.com', // Replace with your Gmail email
+        from: process.env.CONTACT_EMAIL, // Replace with your Gmail email
         to: email,
         subject: 'Forgot Password - OTP',
         text: `Your OTP for password reset is: ${otp}`,
